@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Course {
 	private int duration;
 
 	@Setter(AccessLevel.NONE)
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "course_employee",
 			joinColumns = {@JoinColumn(name = "cid", referencedColumnName = "cid") },
 			inverseJoinColumns = {@JoinColumn(name = "empno", referencedColumnName = "empno") }
